@@ -1,3 +1,5 @@
+#20133233 Shin eun young
+
 import time
 import RPi.GPIO as GPIO
 # for tcp communication
@@ -7,23 +9,23 @@ import sys
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
-GPIO.setup(12, GPIO.OUT)
-GPIO.setup(32, GPIO.OUT)
-GPIO.setup(7,  GPIO.OUT)
-GPIO.setup(18, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)	#Right_Side_Front
+GPIO.setup(32, GPIO.OUT)	#Right_Side_Back
+GPIO.setup(7,  GPIO.OUT)	#Left_Side_Front
+GPIO.setup(18, GPIO.OUT)	#Left_Side_Back
 
 Right_Side_Front = GPIO.PWM(12, 210)
 Right_Side_Back  = GPIO.PWM(32, 210)
 Left_Side_Front  = GPIO.PWM(7,  210)
 Left_Side_Back   = GPIO.PWM(18, 210)
 
-Right_Side_Front.start(0)
+Right_Side_Front.start(0)	#first value = 0
 Right_Side_Back.start(0)
 Left_Side_Front.start(0)
 Left_Side_Back.start(0)
 
-def gpio_function(frequency):
-	v = frequency # accept value 25~55
+def gpio_function(DutyCycle):
+	v = DutyCycle # accept value 31~55
 
 	if v < 56:
 		Right_Side_Front.ChangeDutyCycle(v)
