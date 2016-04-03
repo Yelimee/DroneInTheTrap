@@ -58,7 +58,7 @@ while True:
         while True:
         	data = connection.recv(256)
         	print >>sys.stderr, 'received %s' % data
-        	gpio_function(data)	
+        	gpio_function(int(data))	
         	if data:
         		print >>sys.stderr, 'sendging message back to the client'
         		connection.sendall(str(int(data) * 10))
