@@ -49,7 +49,8 @@ sock.listen(1)
 
 while True:
 	print >>sys.stderr, 'waiting for a connection'
-	connection, client_address = socket.accept()
+	connection, client_address = sock.accept()
+	# not socket.accept()
 
 	try:
         print >>sys.stderr, 'connection from', client_address
